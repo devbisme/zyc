@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>zyc 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-zyc-s-documentation">
+<h1>Welcome to zyc’s documentation!<a class="headerlink" href="#welcome-to-zyc-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<span id="document-readme"></span><div class="section" id="zyc">
+<h2>zyc<a class="headerlink" href="#zyc" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/zyc"><img alt="https://img.shields.io/pypi/v/zyc.svg" src="https://img.shields.io/pypi/v/zyc.svg" /></a>
+<a class="reference external image-reference" href="https://travis-ci.org/xesscorp/zyc"><img alt="https://img.shields.io/travis/xesscorp/zyc.svg" src="https://img.shields.io/travis/xesscorp/zyc.svg" /></a>
+<a class="reference external image-reference" href="https://zyc.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/zyc/badge/?version=latest" /></a>
+<p>A GUI utility for searching and selecting parts and footprints for use with <a class="reference external" href="https://pypi.org/project/skidl/">SKiDL</a>.</p>
+<ul class="simple">
+<li><p>Free software: MIT license</p></li>
+<li><p>Documentation: <a class="reference external" href="https://xesscorp.github.io/zyc">https://xesscorp.github.io/zyc</a> .</p></li>
+</ul>
+<div class="section" id="features">
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Keyword search and selection of parts in KiCad libraries.</p></li>
+<li><p>Keyword search and selection of footprints in KiCad libraries.</p></li>
+<li><p>Copy-and-paste part instances into SKiDL code.</p></li>
+</ul>
+</div>
+<div class="section" id="credits">
+<h3>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h3>
+<p>This package was created with <a class="reference external" href="https://github.com/audreyr/cookiecutter">Cookiecutter</a> and the <a class="reference external" href="https://github.com/audreyr/cookiecutter-pypackage">audreyr/cookiecutter-pypackage</a> project template.</p>
+</div>
+</div>
+<span id="document-installation"></span><div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stable-release">
+<h3>Stable release<a class="headerlink" href="#stable-release" title="Permalink to this headline">¶</a></h3>
+<p>To install zyc, run this command in your terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install zyc
+</pre></div>
+</div>
+<p>This is the preferred method to install zyc, as it will always install the most recent stable release.</p>
+<p>If you don’t have <a class="reference external" href="https://pip.pypa.io">pip</a> installed, this <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python installation guide</a> can guide
+you through the process.</p>
+</div>
+<div class="section" id="from-sources">
+<h3>From sources<a class="headerlink" href="#from-sources" title="Permalink to this headline">¶</a></h3>
+<p>The sources for zyc can be downloaded from the <a class="reference external" href="https://github.com/xesscorp/zyc">Github repo</a>.</p>
+<p>You can either clone the public repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> git clone git://github.com/xesscorp/zyc
+</pre></div>
+</div>
+<p>Or download the <a class="reference external" href="https://github.com/xesscorp/zyc/tarball/master">tarball</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> curl  -OL https://github.com/xesscorp/zyc/tarball/master
+</pre></div>
+</div>
+<p>Once you have a copy of the source, you can install it with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python setup.py install
+</pre></div>
+</div>
+</div>
+</div>
+<span id="document-usage"></span><div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>Just enter <code class="docutils literal notranslate"><span class="pre">zyc</span></code> at the command line to bring up the GUI.</p>
+<p><img alt="zyc part &amp; footprint assigner." src="_images/zyc.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">zyc</span></code> has two, cooperating panes: a part is searched for and selected in the top pane, and then the
+same is done for a footprint in the bottom pane. Then you can paste a SKiDL <code class="docutils literal notranslate"><span class="pre">Part(...)</span></code> instantiation
+with the part and footprint into a code editing window.</p>
+<p>To begin, start off by typing some search terms describing the part you want
+into the upper text-entry box (1) and hit <code class="docutils literal notranslate"><span class="pre">RETURN</span></code> or click the <code class="docutils literal notranslate"><span class="pre">Search</span></code> button (2).</p>
+<p><img alt="Entering part search terms in zyc." src="_images/zyc-part-search-terms.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">zyc</span></code> will scan through all the available parts looking for your search terms in the library names and
+the part names, aliases, descriptions, and keywords. (This initial search takes 20-30 seconds, but
+any further searches are quick because the part data gets cached.)
+The search terms can contain one or more text strings and/or regular expressions (REs).
+Any matching parts are displayed in the Library/Part table (1).
+Clicking on a row in the table (2) displays the part’s description and keywords (3), datasheet hyperlink (4), and
+I/O pin table (5) on the right-side of the pane.</p>
+<p><img alt="zyc part search results." src="_images/zyc-part-search-results.png" /></p>
+<p>Selecting a part also loads the footprint search text-entry box (6) with an initial set of search terms formed from
+the part’s list of recommended footprints plus the number of part pins.
+You can edit these search terms and add more to modify the footprint search.
+(Which is handy because, in this case, the number of pins is wrong since the pin list only contains
+six entries but the actual number of pins is eight. So I’ll just remove it.)
+Then press the <code class="docutils literal notranslate"><span class="pre">Search</span></code> button (7) to scan through all the footprints for matching terms.
+(As with parts, the initial footprint search takes 20-30 seconds but further searches are fast
+because of caching.)</p>
+<p>The footprints that match the search terms appear in the Library/Footprint table (1).
+In this case, there is only one.
+Selecting it makes the footprint description appear (2) as well as a drawing of the footprint (3).
+(If a hyperlink for the package datasheet was available, that would show up as well.)</p>
+<p><img alt="zyc footprint search results." src="_images/zyc-fp-search-results.png" /></p>
+<p>Once a part and footprint are selected, you can click on the <code class="docutils literal notranslate"><span class="pre">Copy</span></code> button in the upper panel (1)
+to place a <code class="docutils literal notranslate"><span class="pre">Part(...)</span></code> instantiation on the clipboard.</p>
+<p><img alt="zyc footprint search results." src="_images/zyc-part-fp-copy.png" /></p>
+<p>Then you can go anywhere (such as your code editor) and paste the clipboard contents to get the part
+instantiation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uc</span> <span class="o">=</span> <span class="n">Part</span><span class="p">(</span><span class="n">lib</span><span class="o">=</span><span class="s1">&#39;MCU_Microchip_PIC10.lib&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;PIC10F202-IMC&#39;</span><span class="p">,</span>
+          <span class="n">footprint</span><span class="o">=</span><span class="s1">&#39;Package_DFN_QFN:DFN-8-1EP_2x3mm_P0.5mm_EP0.61x2.2mm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you check the <code class="docutils literal notranslate"><span class="pre">Tmplt</span></code> box (2) and then click the <code class="docutils literal notranslate"><span class="pre">Copy</span></code> button, a part template (instead of an instance)
+gets placed on the clipboard and appears as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uc</span> <span class="o">=</span> <span class="n">Part</span><span class="p">(</span><span class="n">lib</span><span class="o">=</span><span class="s1">&#39;MCU_Microchip_PIC10.lib&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;PIC10F202-IMC&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="n">TEMPLATE</span><span class="p">,</span>
+          <span class="n">footprint</span><span class="o">=</span><span class="s1">&#39;Package_DFN_QFN:DFN-8-1EP_2x3mm_P0.5mm_EP0.61x2.2mm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To make it easier to connect the pins, <code class="docutils literal notranslate"><span class="pre">zyc</span></code> lets you select the names from the pin list column (1).
+Right-clicking on the table copies whatever is selected to the clipboard.</p>
+<p><img alt="zyc part pin copy." src="_images/zyc-pin-copy.png" /></p>
+<p>Then the pin names can be pasted into the code editor:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uc</span> <span class="o">=</span> <span class="n">Part</span><span class="p">(</span><span class="n">lib</span><span class="o">=</span><span class="s1">&#39;MCU_Microchip_PIC10.lib&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;PIC10F202-IMC&#39;</span><span class="p">,</span>
+          <span class="n">footprint</span><span class="o">=</span><span class="s1">&#39;Package_DFN_QFN:DFN-8-1EP_2x3mm_P0.5mm_EP0.61x2.2mm&#39;</span><span class="p">)</span>
+<span class="s2">&quot;VDD&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;GP2&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;GP1&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;GP0&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;VSS&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;GP3&quot;</span>
+</pre></div>
+</div>
+<p>Now you can use the strings to connect the microcontroller pins to various nets:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uc</span> <span class="o">=</span> <span class="n">Part</span><span class="p">(</span><span class="n">lib</span><span class="o">=</span><span class="s1">&#39;MCU_Microchip_PIC10.lib&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;PIC10F202-IMC&#39;</span><span class="p">,</span>
+          <span class="n">footprint</span><span class="o">=</span><span class="s1">&#39;Package_DFN_QFN:DFN-8-1EP_2x3mm_P0.5mm_EP0.61x2.2mm&#39;</span><span class="p">)</span>
+<span class="n">uc</span><span class="p">[</span><span class="s2">&quot;VDD&quot;</span><span class="p">,</span> <span class="s2">&quot;VSS&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Net</span><span class="p">(</span><span class="s1">&#39;VCC&#39;</span><span class="p">),</span> <span class="n">Net</span><span class="p">(</span><span class="s1">&#39;GND&#39;</span><span class="p">)</span>
+<span class="n">uc</span><span class="p">[</span><span class="s2">&quot;GP0&quot;</span><span class="p">,</span> <span class="s2">&quot;GP1&quot;</span><span class="p">,</span> <span class="s2">&quot;GP2&quot;</span><span class="p">,</span> <span class="s2">&quot;GP3&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Bus</span><span class="p">(</span><span class="s1">&#39;GP&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">zyc</span></code> lets you double-click on any table column header to re-sort the table
+based on the contents of that column.
+This can be useful in grouping pins by their names, functions, or part units
+before selecting and pasting them.
+Using an FPGA as an example, double-clicking the <code class="docutils literal notranslate"><span class="pre">Unit</span></code> column (1)
+orders the table so you can select all the I/O pins in one of its banks (2).</p>
+<p><img alt="zyc part pin sort." src="_images/zyc-pin-sort.png" /></p>
+<p>Then the pins can be pasted:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;IO_0_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_0_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_25_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_25_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L1N_T0_AD0N_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L1N_T0_D01_DIN_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L1P_T0_AD0P_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L1P_T0_D00_MOSI_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L2N_T0_AD8N_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L2N_T0_D03_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L2P_T0_AD8P_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L2P_T0_D02_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L3N_T0_DQS_AD1N_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L3N_T0_DQS_EMCCLK_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L3P_T0_DQS_AD1P_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L3P_T0_DQS_PUDC_B_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L4N_T0_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L4N_T0_D05_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L4P_T0_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L4P_T0_D04_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L5N_T0_AD9N_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L5N_T0_D07_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L5P_T0_AD9P_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L5P_T0_D06_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L6N_T0_D08_VREF_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L6N_T0_VREF_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L6P_T0_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L6P_T0_FCS_B_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L7N_T1_AD2N_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L7N_T1_D10_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L7P_T1_AD2P_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L7P_T1_D09_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L8N_T1_AD10N_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L8N_T1_D12_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L8P_T1_AD10P_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L8P_T1_D11_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L9N_T1_DQS_AD3N_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L9N_T1_DQS_D13_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L9P_T1_DQS_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L9P_T1_DQS_AD3P_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L10N_T1_AD11N_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L10N_T1_D15_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L10P_T1_AD11P_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L10P_T1_D14_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L11N_T1_SRCC_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L11N_T1_SRCC_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L11P_T1_SRCC_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L11P_T1_SRCC_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L12N_T1_MRCC_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L12N_T1_MRCC_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L12P_T1_MRCC_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L12P_T1_MRCC_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L13N_T2_MRCC_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L13N_T2_MRCC_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L13P_T2_MRCC_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L13P_T2_MRCC_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L14N_T2_SRCC_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L14N_T2_SRCC_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L14P_T2_SRCC_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L14P_T2_SRCC_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L15N_T2_DQS_ADV_B_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L15N_T2_DQS_DOUT_CSO_B_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L15P_T2_DQS_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L15P_T2_DQS_RDWR_B_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L16N_T2_A15_D31_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L16N_T2_A27_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L16P_T2_A28_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L16P_T2_CSI_B_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L17N_T2_A13_D29_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L17N_T2_A25_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L17P_T2_A14_D30_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L17P_T2_A26_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L18N_T2_A11_D27_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L18N_T2_A23_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L18P_T2_A12_D28_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L18P_T2_A24_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L19N_T3_A09_D25_VREF_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L19N_T3_A21_VREF_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L19P_T3_A10_D26_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L19P_T3_A22_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L20N_T3_A07_D23_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L20N_T3_A19_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L20P_T3_A08_D24_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L20P_T3_A20_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L21N_T3_DQS_A06_D22_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L21N_T3_DQS_A18_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L21P_T3_DQS_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L21P_T3_DQS_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L22N_T3_A04_D20_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L22N_T3_A16_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L22P_T3_A05_D21_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L22P_T3_A17_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L23N_T3_A02_D18_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L23N_T3_FWE_B_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L23P_T3_A03_D19_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L23P_T3_FOE_B_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L24N_T3_A00_D16_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L24N_T3_RS0_15&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L24P_T3_A01_D17_14&quot;</span><span class="p">,</span> 
+<span class="s2">&quot;IO_L24P_T3_RS1_15&quot;</span>
+</pre></div>
+</div>
+<p>This is definitely something that would be difficult to type manually without making a mistake!</p>
+<p><code class="docutils literal notranslate"><span class="pre">zyc</span></code> requires minimal setup.
+By default, it will use the <code class="docutils literal notranslate"><span class="pre">KICAD_SYMBOL_DIR</span></code> environment variable to look for part libraries,
+and it will look for the global footprint library table (<code class="docutils literal notranslate"><span class="pre">fp_lib_table</span></code>) in the default location
+where KiCad installs it on various OSes.
+You can also add or change the directories that are searched for part libraries (1) or for
+<code class="docutils literal notranslate"><span class="pre">fp_lib_table</span></code> files (2) using the menu items below:</p>
+<p><img alt="zyc path setup." src="_images/zyc-path-setup.png" /></p>
+<p>It may happen that you change some part libraries or add more footprint files while <code class="docutils literal notranslate"><span class="pre">zyc</span></code> is
+running. If so, you’ll want to refresh the part and footprint caches (3).</p>
+</div>
+<span id="document-contributing"></span><div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<p>Contributions are welcome, and they are greatly appreciated! Every little bit
+helps, and credit will always be given.</p>
+<p>You can contribute in many ways:</p>
+<div class="section" id="types-of-contributions">
+<h3>Types of Contributions<a class="headerlink" href="#types-of-contributions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="report-bugs">
+<h4>Report Bugs<a class="headerlink" href="#report-bugs" title="Permalink to this headline">¶</a></h4>
+<p>Report bugs at <a class="reference external" href="https://github.com/xesscorp/zyc/issues">https://github.com/xesscorp/zyc/issues</a>.</p>
+<p>If you are reporting a bug, please include:</p>
+<ul class="simple">
+<li><p>Your operating system name and version.</p></li>
+<li><p>Any details about your local setup that might be helpful in troubleshooting.</p></li>
+<li><p>Detailed steps to reproduce the bug.</p></li>
+</ul>
+</div>
+<div class="section" id="fix-bugs">
+<h4>Fix Bugs<a class="headerlink" href="#fix-bugs" title="Permalink to this headline">¶</a></h4>
+<p>Look through the GitHub issues for bugs. Anything tagged with “bug” and “help
+wanted” is open to whoever wants to implement it.</p>
+</div>
+<div class="section" id="implement-features">
+<h4>Implement Features<a class="headerlink" href="#implement-features" title="Permalink to this headline">¶</a></h4>
+<p>Look through the GitHub issues for features. Anything tagged with “enhancement”
+and “help wanted” is open to whoever wants to implement it.</p>
+</div>
+<div class="section" id="write-documentation">
+<h4>Write Documentation<a class="headerlink" href="#write-documentation" title="Permalink to this headline">¶</a></h4>
+<p>zyc could always use more documentation, whether as part of the
+official zyc docs, in docstrings, or even on the web in blog posts,
+articles, and such.</p>
+</div>
+<div class="section" id="submit-feedback">
+<h4>Submit Feedback<a class="headerlink" href="#submit-feedback" title="Permalink to this headline">¶</a></h4>
+<p>The best way to send feedback is to file an issue at <a class="reference external" href="https://github.com/xesscorp/zyc/issues">https://github.com/xesscorp/zyc/issues</a>.</p>
+<p>If you are proposing a feature:</p>
+<ul class="simple">
+<li><p>Explain in detail how it would work.</p></li>
+<li><p>Keep the scope as narrow as possible, to make it easier to implement.</p></li>
+<li><p>Remember that this is a volunteer-driven project, and that contributions
+are welcome :)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="get-started">
+<h3>Get Started!<a class="headerlink" href="#get-started" title="Permalink to this headline">¶</a></h3>
+<p>Ready to contribute? Here’s how to set up <cite>zyc</cite> for local development.</p>
+<ol class="arabic">
+<li><p>Fork the <cite>zyc</cite> repo on GitHub.</p></li>
+<li><p>Clone your fork locally:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git clone git@github.com:your_name_here/zyc.git
+</pre></div>
+</div>
+</li>
+<li><p>Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ mkvirtualenv zyc
+$ <span class="nb">cd</span> zyc/
+$ python setup.py develop
+</pre></div>
+</div>
+</li>
+<li><p>Create a branch for local development:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git checkout -b name-of-your-bugfix-or-feature
+</pre></div>
+</div>
+<p>Now you can make your changes locally.</p>
+</li>
+<li><p>Commit your changes and push your branch to GitHub:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ git add .
+$ git commit -m <span class="s2">&quot;Your detailed description of your changes.&quot;</span>
+$ git push origin name-of-your-bugfix-or-feature
+</pre></div>
+</div>
+</li>
+<li><p>Submit a pull request through the GitHub website.</p></li>
+</ol>
+</div>
+<div class="section" id="pull-request-guidelines">
+<h3>Pull Request Guidelines<a class="headerlink" href="#pull-request-guidelines" title="Permalink to this headline">¶</a></h3>
+<p>Before you submit a pull request, check that it meets these guidelines:</p>
+<ol class="arabic simple">
+<li><p>If the pull request adds functionality, the docs should be updated. Put
+your new functionality into a function with a docstring, and add the
+feature to the list in README.rst.</p></li>
+<li><p>The pull request should work for Python 2.7 and &gt;=3.5.</p></li>
+</ol>
+</div>
+</div>
+<span id="document-authors"></span><div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="development-lead">
+<h3>Development Lead<a class="headerlink" href="#development-lead" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>XESS Corp. &lt;<a class="reference external" href="mailto:info&#37;&#52;&#48;xess&#46;com">info<span>&#64;</span>xess<span>&#46;</span>com</a>&gt;</p></li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<p>None yet. Why not be the first?</p>
+</div>
+</div>
+<span id="document-history"></span><div class="section" id="history">
+<h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>0.1.0 (2019-12-16)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Extracted zyc utility from SKiDL and released on PyPi.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html#document-index">zyc</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-readme">zyc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-authors">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-history">History</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html#document-index">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, XESS Corp..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
