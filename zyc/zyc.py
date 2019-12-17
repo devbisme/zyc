@@ -41,6 +41,7 @@ from skidl import (
     skidl_cfg,
 )
 from .common import *
+from .pckg_info import __version__
 from .skidl_footprint_search import FootprintSearchPanel
 from .skidl_part_search import PartSearchPanel
 
@@ -188,7 +189,7 @@ General:
 
     def ShowAbout(self, e):
         Feedback(
-            APP_TITLE
+            APP_TITLE + " " + __version__
             + """
 (c) 2019 XESS Corp.
 https://github.com/xesscorp/skidl
