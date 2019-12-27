@@ -475,5 +475,6 @@ class MyGrid(wx.grid.Grid):
         if wx.TheClipboard.Open():
             wx.TheClipboard.SetData(dataObj)
             wx.TheClipboard.Flush()
+            wx.TheClipboard.Close()
         else:
             Feedback("Unable to open clipboard!", "Error")

@@ -459,6 +459,7 @@ class PartSearchPanel(wx.SplitterWindow):
         if wx.TheClipboard.Open():
             wx.TheClipboard.SetData(dataObj)
             wx.TheClipboard.Flush()
+            wx.TheClipboard.Close()
         else:
             Feedback("Unable to open clipboard!", "Error")
 
@@ -488,6 +489,7 @@ class PartSearchPanel(wx.SplitterWindow):
         if wx.TheClipboard.Open():
             wx.TheClipboard.SetData(dataObj)
             wx.TheClipboard.Flush()
+            wx.TheClipboard.Close()
         else:
             Feedback("Unable to open clipboard!", "Error")
 
