@@ -51,6 +51,11 @@ SendFootprintEvent, EVT_SEND_FOOTPRINT = wx.lib.newevent.NewEvent()
 SendSearchTermsEvent, EVT_SEND_SEARCH_TERMS = wx.lib.newevent.NewEvent()
 
 
+def natural_sort_key(s, _nsre=re.compile("([0-9]+)")):
+    """Sorting function for pin numbers or names."""
+    return [int(text) if text.isdigit() else text.lower() for text in _nsre.split(s)]
+
+
 def is_dark_mode():
     window_colour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOW)
     luminance = sum([c * f for c, f in zip(window_colour, [0.299, 0.587, 0.114])])
@@ -308,7 +313,7 @@ class MyGrid(wx.grid.Grid):
         self.EnableEditing(False)  # User can't edit values in table.
         self.SetDefaultCellBackgroundColour(parent.GetBackgroundColour())
         self.ColourGridBackground()
-        self.SetSelectionMode(wx.grid.Grid.GridSelectionModes.SelectRows)
+        self.SetSelectionMode(wx.grid.Grid.GridSelectionModes.GridSelectRows)
         self.SetLabelFont(self.GetLabelFont().MakeBold())
         self.SetTabBehaviour(wx.grid.Grid.Tab_Leave)
 

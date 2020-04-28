@@ -36,7 +36,6 @@ import wx
 from skidl import (
     KICAD,
     lib_search_paths,
-    natural_sort_key,
     search_parts_iter,
     skidl_cfg,
 )
@@ -297,7 +296,7 @@ class PartSearchPanel(wx.SplitterWindow):
             border=SPACING,
         )
         self.pin_info = MyGrid(part_panel, ("Pin", "Name", "Type", "Unit"))
-        self.pin_info.SetSelectionMode(wx.grid.Grid.GridSelectionModes.SelectCells)
+        self.pin_info.SetSelectionMode(wx.grid.Grid.GridSelectionModes.GridSelectCells)
         self.pin_info.Resize(10)
         self.pin_info.SetSortFunc(0, natural_sort_key)  # Natural sort pin numbers.
         self.pin_info.SetSortFunc(1, natural_sort_key)  # Natural sort pin names.

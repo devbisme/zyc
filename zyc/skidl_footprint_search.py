@@ -37,7 +37,6 @@ import wx
 from skidl import (
     KICAD,
     footprint_search_paths,
-    natural_sort_key,
     rmv_quotes,
     search_footprints_iter,
     skidl_cfg,

@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 __author__ = "XESS Corp."
 __email__ = "info@xess.com"
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 if "sdist" in sys.argv[1:]:
     with open("zyc/pckg_info.py", "w") as f:
@@ -25,7 +25,7 @@ requirements = [
     "skidl >= 0.0.27",
     "kinparse >= 0.1.0",
     'enum34; python_version < "3.0"',
-    "wxpython",
+    "wxpython >= 4.0.7",
     "pykicad",
 ]
 
@@ -38,8 +38,8 @@ setup(
     author_email=__email__,
     version=__version__,
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
-        "Intended Audience :: Developers",
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Manufacturing",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Programming Language :: Python :: 2",
