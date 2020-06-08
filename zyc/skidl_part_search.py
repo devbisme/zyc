@@ -455,9 +455,10 @@ class PartSearchPanel(wx.SplitterWindow):
         dataObj.SetText(self.part_inst)
 
         # Place the SKiDL part instantiation on the clipboard.
+        wx.TheClipboard.Clear() # Prevents error about clipbrd already being open.
         if wx.TheClipboard.Open():
             wx.TheClipboard.SetData(dataObj)
-            wx.TheClipboard.Flush()
+            wx.TheClipboard.Close()  # Using Flush() causes error on linux.
         else:
             Feedback("Unable to open clipboard!", "Error")
 
@@ -484,9 +485,10 @@ class PartSearchPanel(wx.SplitterWindow):
         dataObj.SetText(part_inst)
 
         # Place the SKiDL part instantiation on the clipboard.
+        wx.TheClipboard.Clear() # Prevents error about clipbrd already being open.
         if wx.TheClipboard.Open():
             wx.TheClipboard.SetData(dataObj)
-            wx.TheClipboard.Flush()
+            wx.TheClipboard.Close()  # Using Flush() causes error on linux.
         else:
             Feedback("Unable to open clipboard!", "Error")
 

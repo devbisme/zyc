@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 __author__ = "XESS Corp."
 __email__ = "info@xess.com"
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 if "sdist" in sys.argv[1:]:
     with open("zyc/pckg_info.py", "w") as f:

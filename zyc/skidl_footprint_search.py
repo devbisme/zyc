@@ -522,9 +522,10 @@ class FootprintSearchPanel(wx.SplitterWindow):
         dataObj.SetText(footprint_inst)
 
         # Place the SKiDL part instantiation on the clipboard.
+        wx.TheClipboard.Clear() # Prevents error about clipbrd already being open.
         if wx.TheClipboard.Open():
             wx.TheClipboard.SetData(dataObj)
-            wx.TheClipboard.Flush()
+            wx.TheClipboard.Close()  # Using Flush() causes error on linux.
         else:
             Feedback("Unable to open clipboard!", "Error")
 
