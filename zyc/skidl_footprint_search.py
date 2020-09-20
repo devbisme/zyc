@@ -421,6 +421,11 @@ class FootprintSearchPanel(wx.SplitterWindow):
     def OnSelectCell(self, event):
         # When a row of the footprint table is selected, display the data for that footprint.
 
+        # A row of the footprint table has been selected, so don't allow the focus to return
+        # to the first row in the idle state. In the event the first row points to a footprint
+        # with a parsing problem, this will cause an infinite recursion.
+        self.focus_on_found_footprints = False
+
         # Ths is a null footprint that just paints an "X" (cross) when there's no valid footprint.
         null_module_text = [
             "(module NULL",
@@ -428,6 +433,7 @@ class FootprintSearchPanel(wx.SplitterWindow):
             "(fp_line (start 1.0 0.0) (end 0.0 1.0) (layer F.Fab) (width 0.01))",
             ")",
         ]
+
 
         # Get the selected row in the lib/footprint table and translate it to the row in the data table.
         self.found_footprints.ClearSelection()
@@ -455,7 +461,8 @@ class FootprintSearchPanel(wx.SplitterWindow):
             )
             module_text = null_module_text
             module = pym.Module.parse("\n".join(module_text))
-        wx.EndBusyCursor()
+        finally:
+            wx.EndBusyCursor()
 
         # Get the footprint description and tags if they exist.
         descr = ""
