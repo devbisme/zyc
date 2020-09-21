@@ -2,6 +2,12 @@
 History
 =======
 
+0.4.0 (2020-09-20)
+------------------
+
+* Fixed infinite recursion caused by search that returns an entire list of invalid footprints (issue #2).
+
+
 0.3.0 (2020-06-07)
 ------------------
 
