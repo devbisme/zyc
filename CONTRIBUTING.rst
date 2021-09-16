@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/xesscorp/zyc/issues.
+Report bugs at https://github.com/devbisme/zyc/issues.
 
 If you are reporting a bug, please include:
 
@@ -45,7 +45,7 @@ articles, and such.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/xesscorp/zyc/issues.
+The best way to send feedback is to file an issue at https://github.com/devbisme/zyc/issues.
 
 If you are proposing a feature:
 
@@ -67,7 +67,7 @@ Ready to contribute? Here's how to set up `zyc` for local development.
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
     $ mkvirtualenv zyc
-    $ cd zyc/
+    $ cd zyc
     $ python setup.py develop
 
 4. Create a branch for local development::

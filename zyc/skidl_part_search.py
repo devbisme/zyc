@@ -153,8 +153,8 @@ class AppFrame(wx.Frame):
         Feedback(
             APP_TITLE
             + """
-(c) 2019 XESS Corp.
-https://github.com/xesscorp/skidl
+(c) 2019-2021 Dave Vandenbout
+https://github.com/devbisme/zyc
 MIT License
             """,
             "About",

@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/xesscorp/zyc
+    $ git clone git://github.com/devbisme/zyc
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/xesscorp/zyc/tarball/master
+    $ curl  -OL https://github.com/devbisme/zyc/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/xesscorp/zyc
-.. _tarball: https://github.com/xesscorp/zyc/tarball/master
+.. _Github repo: https://github.com/devbisme/zyc
+.. _tarball: https://github.com/devbisme/zyc/tarball/master

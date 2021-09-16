@@ -2,6 +2,13 @@
 History
 =======
 
+1.0.0 (2021-09-16)
+------------------
+
+* Disabled creation of SKiDL logging and ERC files.
+* Decided this tool was mature to the point it could be called 1.0.0.
+
+
 0.4.0 (2020-09-20)
 ------------------
 

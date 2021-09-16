@@ -39,6 +39,7 @@ from skidl import (
     footprint_search_paths,
     lib_search_paths,
     skidl_cfg,
+    no_files,
 )
 from .common import *
 from .pckg_info import __version__
@@ -191,8 +192,8 @@ General:
         Feedback(
             APP_TITLE + " " + __version__
             + """
-(c) 2019 XESS Corp.
-https://github.com/xesscorp/skidl
+(c) 2019-2021 Dave Vandenbout
+https://github.com/devbisme/zyc
 MIT License
             """,
             "About",
@@ -226,6 +227,8 @@ class PartFootprintSearchPanel(wx.SplitterWindow):
 
 def main():
     # import wx.lib.inspection
+
+    no_files() # Disable creation of SKiDL ERC and log files.
 
     app = wx.App()
     AppFrame(None)

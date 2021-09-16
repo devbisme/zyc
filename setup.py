@@ -6,9 +6,9 @@
 import sys
 from setuptools import setup, find_packages
 
-__author__ = "XESS Corp."
-__email__ = "info@xess.com"
-__version__ = "0.4.0"
+__author__ = "Dave Vandenbout"
+__email__ = "devbisme@xess.com"
+__version__ = "1.0.0"
 
 if "sdist" in sys.argv[1:]:
     with open("zyc/pckg_info.py", "w") as f:
@@ -38,17 +38,14 @@ setup(
     author_email=__email__,
     version=__version__,
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Manufacturing",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Programming Language :: Python :: 2",
+        "Operating System :: OS Independent"
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
+        "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)"
     ],
     description="A GUI for searching and selecting parts and footprints for use in SKiDL.",
     entry_points={"gui_scripts": ["zyc = zyc.zyc:main"]},
@@ -62,6 +59,6 @@ setup(
     setup_requires=setup_requirements,
     test_suite="tests",
     tests_require=test_requirements,
-    url="https://github.com/xesscorp/zyc",
+    url="https://github.com/devbisme/zyc",
     zip_safe=False,
 )
