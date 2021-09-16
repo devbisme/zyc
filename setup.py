@@ -42,10 +42,10 @@ setup(
         "Intended Audience :: Manufacturing",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Operating System :: OS Independent"
+        "Operating System :: OS Independent",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
-        "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)"
+        "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)",
     ],
     description="A GUI for searching and selecting parts and footprints for use in SKiDL.",
     entry_points={"gui_scripts": ["zyc = zyc.zyc:main"]},
