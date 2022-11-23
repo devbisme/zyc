@@ -60,5 +60,11 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/devbisme/zyc",
+    project_urls={
+        "Documentation": "https://devbisme.github.io/zyc",
+        "Source": "https://github.com/devbisme/zyc",
+        "Changelog": "https://github.com/devbisme/zyc/blob/master/HISTORY.rst",
+        "Tracker": "https://github.com/devbisme/zyc/issues",
+    },
     zip_safe=False,
 )
