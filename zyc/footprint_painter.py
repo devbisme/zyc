@@ -137,6 +137,9 @@ class Layer(object):
     def paint(self, dc):
         """Paint the graphic primitives into the device context."""
 
+        def to_int(lst):
+            return [int(e) for e in lst]
+
         # For filled polygons, use a transparent pen and the layer brush style.
         dc.SetPen(wx.Pen(wx.Colour(0, 0, 0), style=wx.PENSTYLE_TRANSPARENT))
         dc.SetBrush(self.brush)
@@ -144,19 +147,22 @@ class Layer(object):
 
         # For pad circles, use a transparent pen and the layer brush style.
         for pad_circle in self.pad_circles:
-            circ = list(pad_circle)[:]
+            # circ = list(pad_circle)[:]
+            circ = to_int(pad_circle)
             circ[2] = max(circ[2], 2)  # no circle gets painted with radius<2.
             dc.DrawCircle(*circ)
 
         # For lines, use the layer color.
         pen = wx.Pen(self.colour)
         for line in self.lines:
+            line = to_int(line)
             pen.SetWidth(max(line[0], 1))  # Set pen width.
             dc.SetPen(pen)
             dc.DrawLine(*line[1:])
 
         # For circles, use the layer color.
         for circle in self.circles:
+            circle = to_int(circle)
             pen.SetWidth(max(circle[0], 1))  # Set pen width.
             dc.SetPen(pen)
             circ = list(circle[1:])  # Get circle center and radius.

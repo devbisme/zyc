@@ -177,7 +177,7 @@ class Description(wx.Panel):
             wx.StaticText(self, label=label),
             proportion=0,
             flag=wx.ALL,
-            border=SPACING / 2,
+            border=int(SPACING / 2),
         )
 
         self.desc = wx.TextCtrl(
@@ -189,7 +189,7 @@ class Description(wx.Panel):
             wx.StaticLine(self, size=(10000, 2), style=wx.LI_HORIZONTAL),
             proportion=0,
             flag=wx.ALL | wx.EXPAND,
-            border=SPACING / 2,
+            border=int(SPACING / 2),
         )
 
     def SetDescription(self, description):
@@ -220,7 +220,7 @@ class HyperLink(wx.Panel):
             wx.StaticLine(self, size=(10000, 2), style=wx.LI_HORIZONTAL),
             proportion=0,
             flag=wx.ALL | wx.EXPAND,
-            border=SPACING / 2,
+            border=int(SPACING / 2),
         )
 
     def SetURL(self, url):
