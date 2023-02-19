@@ -35,12 +35,12 @@ import wx
 from skidl import (
     KICAD,
     SchLib,
-    footprint_cache,
     footprint_search_paths,
     lib_search_paths,
-    skidl_cfg,
     no_files,
 )
+from skidl.part_query import footprint_cache
+from skidl.skidl import skidl_cfg
 from .common import *
 from .pckg_info import __version__
 from .skidl_footprint_search import FootprintSearchPanel

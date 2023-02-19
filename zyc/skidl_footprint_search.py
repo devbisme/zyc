@@ -37,10 +37,10 @@ import wx
 from skidl import (
     KICAD,
     footprint_search_paths,
-    rmv_quotes,
     search_footprints_iter,
-    skidl_cfg,
 )
+from skidl.utilities import rmv_quotes
+from skidl.skidl import skidl_cfg
 from .common import *
 from .footprint_painter import FootprintPainter
 

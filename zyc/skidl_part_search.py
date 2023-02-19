@@ -37,8 +37,8 @@ from skidl import (
     KICAD,
     lib_search_paths,
     search_parts_iter,
-    skidl_cfg,
 )
+from skidl.skidl import skidl_cfg
 from .common import *
 
 APP_TITLE = "SKiDL Part Search"
