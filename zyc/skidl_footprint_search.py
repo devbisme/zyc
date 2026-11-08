@@ -42,7 +42,7 @@ from skidl import (
 )
 from skidl.utilities import rmv_quotes
 from .common import *
-from .footprint_painter import FootprintPainter
+from .footprint_painter import FP_BCK_COLOUR, FootprintPainter
 
 APP_TITLE = "SKiDL Footprint Search"
 
@@ -170,6 +170,8 @@ class FootprintPaintingPanel(wx.Panel):
     def __init__(self, parent):
         super(self.__class__, self).__init__(parent)
         self.footprint = None
+        self.SetBackgroundStyle(wx.BG_STYLE_PAINT)
+        self.SetBackgroundColour(FP_BCK_COLOUR)
 
         # Repaint the footprint panel whenever the "show actual size" checkbox changes.
         self.paint_actual_size_ckbx = wx.FindWindowById(
@@ -193,22 +195,18 @@ class FootprintPaintingPanel(wx.Panel):
             self._footprint = FootprintPainter(fp, wx.ClientDC(self))
 
     def OnPaint(self, event):
+        dc = wx.AutoBufferedPaintDC(self)
         if self.footprint:
-            self.Refresh()  # Causes repaint of the entire footprint panel.
             self.footprint.paint(
-                wx.PaintDC(self), self.paint_actual_size_ckbx.GetValue()
+                dc, self.paint_actual_size_ckbx.GetValue()
             )
         else:
-            self.ClearBackground()
+            dc.SetBackground(wx.Brush(FP_BCK_COLOUR))
+            dc.Clear()
 
     def OnSize(self, event):
-        if self.footprint:
-            self.Refresh()  # Causes repaint of the entire footprint panel.
-            self.footprint.paint(
-                wx.ClientDC(self), self.paint_actual_size_ckbx.GetValue()
-            )
-        else:
-            self.ClearBackground()
+        self.Refresh()
+        event.Skip()
 
 
 class FootprintSearchPanel(wx.SplitterWindow):

@@ -151,13 +151,13 @@ class Layer(object):
         # For lines, use the layer color.
         pen = wx.Pen(self.colour)
         for line in self.lines:
-            pen.SetWidth(max(line[0], 1))  # Set pen width.
+            pen.SetWidth(max(round(line[0]), 1))  # Set pen width.
             dc.SetPen(pen)
             dc.DrawLine(*line[1:])
 
         # For circles, use the layer color.
         for circle in self.circles:
-            pen.SetWidth(max(circle[0], 1))  # Set pen width.
+            pen.SetWidth(max(round(circle[0]), 1))  # Set pen width.
             dc.SetPen(pen)
             circ = list(circle[1:])  # Get circle center and radius.
             circ[2] = max(
