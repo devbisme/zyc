@@ -35,12 +35,12 @@ import wx
 from skidl import (
     KICAD,
     SchLib,
-    footprint_cache,
     footprint_search_paths,
     lib_search_paths,
-    skidl_cfg,
+    config,
     no_files,
 )
+from skidl.part_query import footprint_cache
 from .common import *
 from .pckg_info import __version__
 from .skidl_footprint_search import FootprintSearchPanel
@@ -137,7 +137,7 @@ class AppFrame(wx.Frame):
         dlg.SetValue(os.pathsep.join(lib_search_paths[KICAD]))
         if dlg.ShowModal() == wx.ID_OK:
             lib_search_paths[KICAD] = dlg.GetValue().split(os.pathsep)
-            skidl_cfg.store()  # Stores updated lib search path in file.
+            config.store()  # Stores updated lib search path in file.
         dlg.Destroy()
 
     def OnFootprintSearchPath(self, event):
@@ -155,7 +155,7 @@ class AppFrame(wx.Frame):
         dlg.SetValue(os.pathsep.join(footprint_search_paths[KICAD]))
         if dlg.ShowModal() == wx.ID_OK:
             footprint_search_paths[KICAD] = dlg.GetValue().split(os.pathsep)
-            skidl_cfg.store()  # Stores updated search path in file.
+            config.store()  # Stores updated search path in file.
         dlg.Destroy()
 
     def OnRefresh(self, event):

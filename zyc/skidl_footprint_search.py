@@ -37,10 +37,10 @@ import wx
 from skidl import (
     KICAD,
     footprint_search_paths,
-    rmv_quotes,
     search_footprints_iter,
-    skidl_cfg,
+    config,
 )
+from skidl.utilities import rmv_quotes
 from .common import *
 from .footprint_painter import FootprintPainter
 
@@ -135,7 +135,7 @@ class AppFrame(wx.Frame):
         dlg.SetValue(os.pathsep.join(footprint_search_paths[KICAD]))
         if dlg.ShowModal() == wx.ID_OK:
             footprint_search_paths[KICAD] = dlg.GetValue().split(os.pathsep)
-            skidl_cfg.store()  # Stores updated search path in file.
+            config.store()  # Stores updated search path in file.
         dlg.Destroy()
 
     def ShowHelp(self, e):
@@ -488,7 +488,7 @@ class FootprintSearchPanel(wx.SplitterWindow):
         # Display the link to the footprint datasheet.
         try:
             # Extract link-like text from the description.
-            url = re.search("(?P<url>https?://[^\s]+)", descr).group("url")
+            url = re.search(r"(?P<url>https?://[^\s]+)", descr).group("url")
         except AttributeError:
             # No URL found so hide the hyperlink.
             self.datasheet_link.SetURL(None)

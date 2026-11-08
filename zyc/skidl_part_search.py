@@ -35,10 +35,12 @@ import wx
 
 from skidl import (
     KICAD,
+    TEMPLATE,
+    Part,
     lib_search_paths,
-    search_parts_iter,
-    skidl_cfg,
+    config,
 )
+from skidl.part_query import PartSearchDB
 from .common import *
 
 APP_TITLE = "SKiDL Part Search"
@@ -133,7 +135,7 @@ class AppFrame(wx.Frame):
         dlg.SetValue(os.pathsep.join(lib_search_paths[KICAD]))
         if dlg.ShowModal() == wx.ID_OK:
             lib_search_paths[KICAD] = dlg.GetValue().split(os.pathsep)
-            skidl_cfg.store()  # Stores updated lib search path in file.
+            config.store()  # Stores updated lib search path in file.
         dlg.Destroy()
 
     def ShowHelp(self, e):
@@ -318,19 +320,11 @@ class PartSearchPanel(wx.SplitterWindow):
         # Scan libraries looking for parts that match search string.
         self.lib_parts = set()
         search_text = self.search_text.GetLineText(0)
-        for lib_part in search_parts_iter(search_text):
-            if lib_part[0] == "LIB":
-                lib_name, lib_idx, num_libs = lib_part[1:4]
-                progress.SetRange(num_libs)
-                if not progress.Update(
-                    lib_idx, "Reading library {}...".format(lib_name)
-                ):
-                    # Cancel button was pressed, so abort.
-                    progress.Destroy()
-                    wx.EndBusyCursor()
-                    return
-            elif lib_part[0] == "PART":
-                self.lib_parts.add(LibPart(*lib_part[1:]))
+        part_search_db = PartSearchDB(tool=KICAD)
+        part_search_db.load_from_lib_search_paths()
+        for result in part_search_db.search(search_text):
+            part = Part(result.lib_path, result.part_name, dest=TEMPLATE)
+            self.lib_parts.add(LibPart(result.lib_name, part, result.part_name))
 
         # Remove progress indicators after search is done.
         progress.Destroy()
@@ -423,7 +417,7 @@ class PartSearchPanel(wx.SplitterWindow):
         # Create search string for part footprint.
         # First, search for any of the footprints in the fplist of the part.
         fp_srch_terms = "|".join(part.fplist)
-        fp_srch_terms = re.sub("[*?]", ".\g<0>", fp_srch_terms)
+        fp_srch_terms = re.sub(r"[*?]", r".\g<0>", fp_srch_terms)
         # Use the number of pins in the part to refine the search.
         num_pins = len(part.pins)
         fp_srch_terms = " ".join((fp_srch_terms, "^#pads={}$".format(num_pins)))

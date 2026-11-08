@@ -22,7 +22,7 @@ with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
 requirements = [
-    "skidl >= 0.0.27",
+    "skidl >= 3.0, < 4.0",
     "kinparse >= 0.1.0",
     'enum34; python_version < "3.0"',
     "wxpython >= 4.0.7",
