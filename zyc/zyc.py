@@ -28,6 +28,7 @@ GUI for finding/displaying parts and footprints.
 
 from __future__ import print_function
 
+import builtins
 import os
 
 import wx
@@ -38,7 +39,6 @@ from skidl import (
     footprint_search_paths,
     lib_search_paths,
     config,
-    no_files,
 )
 from skidl.part_query import footprint_cache
 from .common import *
@@ -228,7 +228,7 @@ class PartFootprintSearchPanel(wx.SplitterWindow):
 def main():
     # import wx.lib.inspection
 
-    no_files() # Disable creation of SKiDL ERC and log files.
+    builtins.default_circuit.no_files = True
 
     app = wx.App()
     AppFrame(None)
