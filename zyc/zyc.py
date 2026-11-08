@@ -28,6 +28,7 @@ GUI for finding/displaying parts and footprints.
 
 from __future__ import print_function
 
+import builtins
 import os
 
 import wx
@@ -35,12 +36,11 @@ import wx
 from skidl import (
     KICAD,
     SchLib,
-    footprint_cache,
     footprint_search_paths,
     lib_search_paths,
-    skidl_cfg,
-    no_files,
+    config,
 )
+from skidl.part_query import footprint_cache
 from .common import *
 from .pckg_info import __version__
 from .skidl_footprint_search import FootprintSearchPanel
@@ -53,6 +53,11 @@ SHOW_ABOUT = 4
 PART_SEARCH_PATH = 5
 FOOTPRINT_SEARCH_PATH = 6
 REFRESH = 7
+
+
+def get_footprint_search_path():
+    path = footprint_search_paths[KICAD]
+    return resolve_footprint_search_path(path[0] if isinstance(path, list) else path)
 
 
 class AppFrame(wx.Frame):
@@ -137,7 +142,7 @@ class AppFrame(wx.Frame):
         dlg.SetValue(os.pathsep.join(lib_search_paths[KICAD]))
         if dlg.ShowModal() == wx.ID_OK:
             lib_search_paths[KICAD] = dlg.GetValue().split(os.pathsep)
-            skidl_cfg.store()  # Stores updated lib search path in file.
+            config.store()  # Stores updated lib search path in file.
         dlg.Destroy()
 
     def OnFootprintSearchPath(self, event):
@@ -147,15 +152,16 @@ class AppFrame(wx.Frame):
             self,
             title="Set Footprint Search Path",
             caption="Footprint Search Path",
-            tip="Enter {sep}-separated list of directories in which to search for fp-lib-table file.".format(
-                sep=os.pathsep
-            ),
+            tip="Enter the directory containing the fp-lib-table file.",
         )
         dlg.Center()
-        dlg.SetValue(os.pathsep.join(footprint_search_paths[KICAD]))
+        dlg.SetValue(get_footprint_search_path())
         if dlg.ShowModal() == wx.ID_OK:
-            footprint_search_paths[KICAD] = dlg.GetValue().split(os.pathsep)
-            skidl_cfg.store()  # Stores updated search path in file.
+            footprint_search_paths[KICAD] = dlg.GetValue()
+            config.store()  # Stores updated search path in file.
+            footprint_search_paths[KICAD] = prepare_footprint_search_path(
+                get_footprint_search_path()
+            )
         dlg.Destroy()
 
     def OnRefresh(self, event):
@@ -228,7 +234,13 @@ class PartFootprintSearchPanel(wx.SplitterWindow):
 def main():
     # import wx.lib.inspection
 
-    no_files() # Disable creation of SKiDL ERC and log files.
+    builtins.default_circuit.no_files = True
+    symbol_dir = os.getenv("KICAD10_SYMBOL_DIR")
+    if symbol_dir:
+        lib_search_paths[KICAD] = [symbol_dir]
+    footprint_search_paths[KICAD] = prepare_footprint_search_path(
+        get_footprint_search_path()
+    )
 
     app = wx.App()
     AppFrame(None)

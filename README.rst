@@ -12,6 +12,7 @@ A GUI utility for searching and selecting parts and footprints for use with `SKi
 
 * Free software: MIT license
 * Documentation: https://devbisme.github.io/zyc .
+* Compatibility: SKiDL 3.x with KiCad 10.
 
 
 Features

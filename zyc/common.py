@@ -27,7 +27,9 @@
 GUI components in common with multiple apps.
 """
 
+import os
 import re
+import tempfile
 
 import wx
 import wx.grid
@@ -56,6 +58,62 @@ def natural_sort_key(s, _nsre=re.compile("([0-9]+)")):
     return [int(text) if text.isdigit() else text.lower() for text in _nsre.split(s)]
 
 
+def resolve_footprint_search_path(path):
+    """Resolve a KiCad fp-lib-table indirection to its table directory."""
+
+    path = os.path.expanduser(os.path.expandvars(path))
+    try:
+        with open(os.path.join(path, "fp-lib-table")) as fp:
+            table = fp.read()
+    except OSError:
+        return path
+
+    match = re.search(
+        r'\(\s*lib\s+.*?\(\s*type\s+"?Table"?\s*\).*?'
+        r'\(\s*uri\s+"?([^"\s)]+)"?\s*\)',
+        table,
+        flags=re.DOTALL,
+    )
+    if not match:
+        return path
+
+    return os.path.dirname(os.path.expanduser(os.path.expandvars(match.group(1))))
+
+
+_footprint_table_dir = None
+
+
+def prepare_footprint_search_path(path):
+    """Create a SKiDL-compatible fp-lib-table without changing KiCad files."""
+
+    global _footprint_table_dir
+
+    table_path = os.path.join(path, "fp-lib-table")
+    try:
+        with open(table_path) as fp:
+            table = fp.read()
+    except OSError:
+        return path
+
+    normalized_table = re.sub(
+        r'(\(\s*type\s+)"KiCad"(\s*\))',
+        r"\1KiCad\2",
+        table,
+    )
+    if normalized_table == table:
+        return path
+
+    if _footprint_table_dir is None:
+        _footprint_table_dir = tempfile.TemporaryDirectory(
+            prefix="zyc-fp-lib-table-"
+        )
+
+    with open(os.path.join(_footprint_table_dir.name, "fp-lib-table"), "w") as fp:
+        fp.write(normalized_table)
+
+    return _footprint_table_dir.name
+
+
 def is_dark_mode():
     window_colour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOW)
     luminance = sum([c * f for c, f in zip(window_colour, [0.299, 0.587, 0.114])])
@@ -64,6 +122,7 @@ def is_dark_mode():
 
 def box_it(window, title_text):
     panel = wx.Panel(window.GetParent())
+    panel.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOW))
     window.Reparent(panel)
     sbox = wx.StaticBox(panel, label=title_text)
     box = wx.StaticBoxSizer(sbox, wx.VERTICAL)
@@ -76,6 +135,7 @@ def stack_it(*windows):
     """Stack windows vertically."""
 
     stack = wx.Panel(windows[0].GetParent())
+    stack.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOW))
     for window in windows:
         window.Reparent(stack)
 
@@ -93,6 +153,9 @@ def add_title(window, title_text, location):
     """Add title to top/bottom of a window."""
 
     titled_window = wx.Panel(window.GetParent())
+    titled_window.SetBackgroundColour(
+        wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOW)
+    )
     window.Reparent(titled_window)
 
     title = wx.StaticText(
@@ -125,6 +188,9 @@ def add_border(window, location):
     """Add border line to one side of a window."""
 
     bordered_window = wx.Panel(window.GetParent())
+    bordered_window.SetBackgroundColour(
+        wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOW)
+    )
     window.Reparent(bordered_window)
 
     if location in (wx.TOP, wx.BOTTOM):
@@ -177,7 +243,7 @@ class Description(wx.Panel):
             wx.StaticText(self, label=label),
             proportion=0,
             flag=wx.ALL,
-            border=SPACING / 2,
+            border=SPACING // 2,
         )
 
         self.desc = wx.TextCtrl(
@@ -189,7 +255,7 @@ class Description(wx.Panel):
             wx.StaticLine(self, size=(10000, 2), style=wx.LI_HORIZONTAL),
             proportion=0,
             flag=wx.ALL | wx.EXPAND,
-            border=SPACING / 2,
+            border=SPACING // 2,
         )
 
     def SetDescription(self, description):
@@ -220,7 +286,7 @@ class HyperLink(wx.Panel):
             wx.StaticLine(self, size=(10000, 2), style=wx.LI_HORIZONTAL),
             proportion=0,
             flag=wx.ALL | wx.EXPAND,
-            border=SPACING / 2,
+            border=SPACING // 2,
         )
 
     def SetURL(self, url):
