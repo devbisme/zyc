@@ -43,6 +43,7 @@ from skidl import (
 from skidl.utilities import rmv_quotes
 from .common import *
 from .footprint_painter import FP_BCK_COLOUR, FootprintPainter
+from .kicad10_footprint import parse_kicad10_footprint
 
 APP_TITLE = "SKiDL Footprint Search"
 
@@ -55,6 +56,11 @@ COPY_FOOTPRINTS = 7
 PAINT_ACTUAL_SIZE_CKBX_ID = 8
 
 footprint_search_text_id = 0
+
+
+def get_footprint_search_path():
+    path = footprint_search_paths[KICAD]
+    return resolve_footprint_search_path(path[0] if isinstance(path, list) else path)
 
 
 class AppFrame(wx.Frame):
@@ -127,15 +133,16 @@ class AppFrame(wx.Frame):
             self,
             title="Set Footprint Search Path",
             caption="Footprint Search Path",
-            tip="Enter {sep}-separated list of directories in which to search for fp-lib-table file.".format(
-                sep=os.pathsep
-            ),
+            tip="Enter the directory containing the fp-lib-table file.",
         )
         dlg.Center()
-        dlg.SetValue(os.pathsep.join(footprint_search_paths[KICAD]))
+        dlg.SetValue(get_footprint_search_path())
         if dlg.ShowModal() == wx.ID_OK:
-            footprint_search_paths[KICAD] = dlg.GetValue().split(os.pathsep)
+            footprint_search_paths[KICAD] = dlg.GetValue()
             config.store()  # Stores updated search path in file.
+            footprint_search_paths[KICAD] = prepare_footprint_search_path(
+                get_footprint_search_path()
+            )
         dlg.Destroy()
 
     def ShowHelp(self, e):
@@ -258,8 +265,7 @@ class FootprintSearchPanel(wx.SplitterWindow):
 
     def OnSearchTerms(self, event):
         # Handle data sent from Part panel to Footprint panel.
-        self.search_text.Clear()
-        self.search_text.WriteText(event.search_terms)
+        self.search_text.SetValue(event.search_terms)
 
     def InitSearchPanel(self, parent):
         # Subpanel for search text box and footprint table.
@@ -449,16 +455,18 @@ class FootprintSearchPanel(wx.SplitterWindow):
         try:
             wx.BeginBusyCursor()
             module = pym.Module.parse("\n".join(module_text))
-        except Exception as e:
-            # Parsing error, use the null module.
-            Feedback(
-                "Error while parsing {}:{}".format(
-                    self.footprints[row][0], self.footprints[row][2]
-                ),
-                "Error",
-            )
-            module_text = null_module_text
-            module = pym.Module.parse("\n".join(module_text))
+        except Exception:
+            try:
+                module = parse_kicad10_footprint("\n".join(module_text))
+            except ValueError:
+                Feedback(
+                    "Error while parsing {}:{}".format(
+                        self.footprints[row][0], self.footprints[row][2]
+                    ),
+                    "Error",
+                )
+                module_text = null_module_text
+                module = pym.Module.parse("\n".join(module_text))
         finally:
             wx.EndBusyCursor()
 

@@ -140,11 +140,17 @@ class Layer(object):
         # For filled polygons, use a transparent pen and the layer brush style.
         dc.SetPen(wx.Pen(wx.Colour(0, 0, 0), style=wx.PENSTYLE_TRANSPARENT))
         dc.SetBrush(self.brush)
-        dc.DrawPolygonList(self.pad_polygons)
+        dc.DrawPolygonList(
+            [
+                [(round(x), round(y)) for x, y in polygon]
+                for polygon in self.pad_polygons
+            ]
+        )
 
         # For pad circles, use a transparent pen and the layer brush style.
         for pad_circle in self.pad_circles:
             circ = list(pad_circle)[:]
+            circ = [round(coord) for coord in circ]
             circ[2] = max(circ[2], 2)  # no circle gets painted with radius<2.
             dc.DrawCircle(*circ)
 
@@ -153,13 +159,14 @@ class Layer(object):
         for line in self.lines:
             pen.SetWidth(max(round(line[0]), 1))  # Set pen width.
             dc.SetPen(pen)
-            dc.DrawLine(*line[1:])
+            dc.DrawLine(*(round(coord) for coord in line[1:]))
 
         # For circles, use the layer color.
         for circle in self.circles:
             pen.SetWidth(max(round(circle[0]), 1))  # Set pen width.
             dc.SetPen(pen)
             circ = list(circle[1:])  # Get circle center and radius.
+            circ = [round(coord) for coord in circ]
             circ[2] = max(
                 circ[2], 2
             )  # Radius must be greater than 2 or no circle is drawn.
